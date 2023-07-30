@@ -1,0 +1,21 @@
+import pytesseract
+from PIL import Image
+
+# Step 3: Set the Tesseract executable path (update this path according to your installation)
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
+# Step 4: Function to perform text recognition on an image
+def recognize_text(image_path):
+    # Open the image using PIL (Python Imaging Library)
+    image = Image.open(image_path)
+    
+    # Perform OCR using Tesseract
+    text = pytesseract.image_to_string(image)
+    
+    return text
+
+# Step 5: Call the recognize_text() function with the path to your image
+if __name__ == '__main__':
+    image_path = 'path_to_your_image.jpg'  # Replace with the actual path of your image
+    extracted_text = recognize_text(image_path)
+    print(extracted_text)
